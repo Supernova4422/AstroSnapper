@@ -164,11 +164,12 @@ class WebUi:
         if self.state is not ShootingState.Ready:
             ui.notify("Already shooting")
         else:
+            ui.notify("Starting shooting")
             self.state = ShootingState.Shooting
             self.SetCameraToProfile()
-            self._TakePhoto()
+            await self._TakePhoto()
             while continuous and self.state is not ShootingState.Stopping:
-                self._TakePhoto()
+                await self._TakePhoto()
 
             self.state = ShootingState.Ready
             ui.notify("Shooting stopped")

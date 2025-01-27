@@ -1,0 +1,5 @@
+nicegui
+libsonyapi
+pysony
+gphoto2
+requests
